@@ -1,16 +1,66 @@
-# React + Vite
+# 🚗 Zencars - Luxury Car Rental Website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Zencars Banner](https://img.shields.io/badge/Zencars-Luxury%20Car%20Rental-blue)
 
-Currently, two official plugins are available:
+## 📌 About The Project
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Zencars is a full-stack luxury car rental web application where users can explore premium cars, book vehicles, make payments, and manage their bookings.
 
-## React Compiler
+The project is built using **React.js for frontend** and **Flask + MongoDB for backend** with authentication and admin management features.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+# ✨ Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 👤 User Features
+
+- User Registration
+- User Login & Authentication
+- Browse Luxury Cars
+- View Car Details
+- Book Cars
+- Select Pickup and Return Dates
+- Booking Summary
+- Payment Page
+- User Dashboard
+- Booking History
+
+---
+
+## 👑 Admin Features
+
+- Admin Login
+- Protected Admin Dashboard
+- Add New Cars
+- Manage Car Listings
+- View Available Cars
+- Control Car Availability
+
+---
+
+# 🛠️ Tech Stack
+
+## Frontend
+
+- React.js
+- Vite
+- React Router DOM
+- Axios
+- React Icons
+- CSS3
+- Responsive Design
+
+## Backend
+
+- Python Flask
+- Flask REST API
+- Flask-CORS
+- JWT Authentication
+
+## Database
+
+- MongoDB
+
+---
+
+# 📂 Project Structure
