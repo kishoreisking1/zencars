@@ -1,0 +1,148 @@
+.cars-page{
+    width:100%;
+    min-height:100vh;
+    padding:80px 8%;
+    background:#f4f7fb;
+}
+
+.cars-hero{
+    text-align:center;
+    margin-bottom:60px;
+}
+
+.cars-hero h1{
+    font-size:55px;
+    color:#0f172a;
+    margin-bottom:15px;
+}
+
+.cars-hero p{
+    color:#666;
+    font-size:18px;
+    margin-bottom:30px;
+}
+
+.cars-hero input{
+    width:420px;
+    max-width:95%;
+    padding:16px;
+    border:none;
+    border-radius:50px;
+    background:white;
+    box-shadow:0 10px 30px rgba(0,0,0,.08);
+    font-size:16px;
+}
+
+.cars-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+    gap:35px;
+}
+
+.car-card{
+    background:white;
+    border-radius:25px;
+    overflow:hidden;
+    transition:.4s;
+    box-shadow:0 10px 35px rgba(0,0,0,.08);
+}
+
+.car-card:hover{
+    transform:translateY(-12px);
+}
+
+.car-image{
+    position:relative;
+}
+
+.car-image img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+}
+
+.status{
+    position:absolute;
+    top:20px;
+    right:20px;
+    color:white;
+    padding:8px 18px;
+    border-radius:30px;
+    font-weight:600;
+}
+
+.available{
+    background:#16a34a;
+}
+
+.booked{
+    background:#dc2626;
+}
+
+.car-info{
+    padding:25px;
+}
+
+.car-info h2{
+    font-size:28px;
+    margin-bottom:20px;
+    color:#0f172a;
+}
+
+.specs{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:18px;
+    color:#555;
+    font-size:15px;
+}
+
+.location{
+    color:#666;
+    margin-bottom:15px;
+}
+
+.car-info h3{
+    color:#2563eb;
+    font-size:36px;
+    margin-bottom:20px;
+}
+
+.car-info h3 span{
+    color:#666;
+    font-size:18px;
+}
+
+.car-info button{
+    width:100%;
+    border:none;
+    padding:16px;
+    border-radius:12px;
+    background:#2563eb;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.car-info button:hover{
+    background:#1d4ed8;
+}
+
+.car-info button:disabled{
+    background:#9ca3af;
+    cursor:not-allowed;
+}
+
+@media(max-width:768px){
+
+.cars-hero h1{
+font-size:40px;
+}
+
+.specs{
+flex-direction:column;
+gap:10px;
+}
+
+}
