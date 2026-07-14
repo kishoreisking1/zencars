@@ -3,7 +3,7 @@ import { ToastContainer } from "react-toastify";
 
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import CarDetails from "./pages/CarDetails";
+import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Cars from "./pages/Cars";
 import Booking from "./pages/Booking";
@@ -22,23 +22,22 @@ function App() {
       <Navbar />
 
       <Routes>
-        <Route
-  path="/cars/:id"
-  element={<CarDetails />}
-/>
+        
+
 <Route path="/payment" element={<Payment />} />
 <Route
   path="/success"
   element={<BookingSuccess />}
-/>
+/><Route path="/register" element={<Register />} />
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<Cars />} />
         <Route path="/booking" element={<Booking />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
+     
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route
+       <Route
   path="/admin"
   element={
     <AdminRoute>
@@ -46,8 +45,6 @@ function App() {
     </AdminRoute>
   }
 />
-  
-
       </Routes>
 
       <Footer />

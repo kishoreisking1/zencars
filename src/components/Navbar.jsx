@@ -72,13 +72,13 @@ Dashboard
 
 
 
+
 {
-localStorage.getItem("role") === "admin" && (
+user?.role === "admin" && (
   <Link to="/admin">
     Admin
   </Link>
 )}
-
 
 
 {

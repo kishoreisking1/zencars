@@ -1,5 +1,5 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import API from "../api/axios";
 import { AuthContext } from "../context/AuthContext";
 
@@ -16,13 +16,13 @@ function Login() {
     try {
       const res = await API.post("/auth/login", {
         email,
-        password
+        password,
       });
 
-      // Check Admin Email
+      // Check if admin
       const isAdmin = res.data.email === "kishore@gmail.com";
 
-      // Save Data
+      // Save data
       localStorage.setItem("token", res.data.token);
       localStorage.setItem("name", res.data.name);
       localStorage.setItem("email", res.data.email);
@@ -33,7 +33,7 @@ function Login() {
         {
           name: res.data.name,
           email: res.data.email,
-          role: isAdmin ? "admin" : "user"
+          role: isAdmin ? "admin" : "user",
         },
         res.data.token
       );
@@ -46,19 +46,21 @@ function Login() {
         navigate("/dashboard");
       }
     } catch (error) {
-      alert(error.response?.data?.message || "Invalid Login");
+      alert(error.response?.data?.message || "Invalid Email or Password");
     }
   };
 
   return (
     <section className="auth-page">
       <div className="auth-card">
+
         <h1>Login</h1>
 
         <form onSubmit={handleSubmit}>
+
           <input
             type="email"
-            placeholder="Email"
+            placeholder="Email Address"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -72,8 +74,17 @@ function Login() {
             required
           />
 
-          <button type="submit">Login</button>
+          <button type="submit">
+            Login
+          </button>
+
         </form>
+
+        <p style={{ marginTop: "20px", textAlign: "center" }}>
+          Don't have an account?{" "}
+          <Link to="/register">Register</Link>
+        </p>
+
       </div>
     </section>
   );

@@ -1,22 +1,29 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./Booking.css";
 
 function Booking() {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
 
-  const car = location.state?.car;
+  const [car, setCar] = useState(null);
 
   const [pickupDate, setPickupDate] = useState("");
   const [returnDate, setReturnDate] = useState("");
+  const [pickupLocation, setPickupLocation] = useState("");
 
-  if (!car) {
-    navigate("/cars");
-    return null;
-  }
+  useEffect(() => {
+    if (location.state?.car) {
+      setCar(location.state.car);
+      setPickupLocation(location.state.car.location || "");
+    } else {
+      navigate("/cars");
+    }
+  }, [location, navigate]);
 
-  const totalDays =
+  if (!car) return null;
+
+  const days =
     pickupDate && returnDate
       ? Math.max(
           1,
@@ -27,14 +34,22 @@ function Booking() {
         )
       : 1;
 
-  const totalPrice = totalDays * car.pricePerDay;
+  const totalPrice = days * car.pricePerDay;
 
-  const handlePayment = () => {
+  const handleProceed = () => {
+    if (!pickupDate || !returnDate) {
+      alert("Please select pickup and return dates.");
+      return;
+    }
+
     navigate("/payment", {
       state: {
         car,
-        pickupDate,
-        returnDate,
+        booking: {
+          pickupDate,
+          returnDate,
+          pickupLocation,
+        },
         totalPrice,
       },
     });
@@ -42,27 +57,19 @@ function Booking() {
 
   return (
     <section className="booking-page">
-
       <div className="booking-container">
 
         <div className="booking-car">
-
           <img src={car.image} alt={car.model} />
 
-          <h1>
-            {car.brand} {car.model}
-          </h1>
+          <h2>{car.brand} {car.model}</h2>
 
-          <p>{car.fuel}</p>
+          <p>⛽ {car.fuel}</p>
+          <p>⚙ {car.transmission}</p>
+          <p>👥 {car.seats} Seats</p>
+          <p>📍 {car.location}</p>
 
-          <p>{car.transmission}</p>
-
-          <p>{car.seats} Seats</p>
-
-          <p>{car.location}</p>
-
-          <h2>₹{car.pricePerDay}/Day</h2>
-
+          <h3>₹{car.pricePerDay}/Day</h3>
         </div>
 
         <div className="booking-form">
@@ -85,13 +92,21 @@ function Booking() {
             onChange={(e) => setReturnDate(e.target.value)}
           />
 
+          <label>Pickup Location</label>
+
+          <input
+            type="text"
+            value={pickupLocation}
+            onChange={(e) => setPickupLocation(e.target.value)}
+          />
+
           <div className="booking-summary">
 
             <h2>Booking Summary</h2>
 
-            <p>Days : {totalDays}</p>
+            <p>Days : {days}</p>
 
-            <p>Price/Day : ₹{car.pricePerDay}</p>
+            <p>Price / Day : ₹{car.pricePerDay}</p>
 
             <h2>Total : ₹{totalPrice}</h2>
 
@@ -99,7 +114,7 @@ function Booking() {
 
           <button
             className="pay-btn"
-            onClick={handlePayment}
+            onClick={handleProceed}
           >
             Proceed To Payment
           </button>
@@ -107,7 +122,6 @@ function Booking() {
         </div>
 
       </div>
-
     </section>
   );
 }
